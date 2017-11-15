@@ -14,12 +14,13 @@ stock = urllib.request.urlopen(dataurl).read()
 datajson = json.loads(stock.decode("utf-8"))
 assert datajson is not ""
 
+# 开始创建消息
+mes = str(date.today()) + " 新股信息\n"
+
 # 检索今天的新股
 #  use +timedelta(days=1) to set days
-time = (date.today()+timedelta(days=1)).strftime('%Y-%m-%dT%H:%M:%S')
-mes = str(date.today()+timedelta(days=1)) + " 新股信息\n"
+time = (date.today()).strftime('%Y-%m-%dT%H:%M:%S')
 for i in datajson:
-    # print(i.get("purchasedate"), i.get("securityshortname"), time)
     if i.get("purchasedate") == time:
         price = i.get("issueprice") if isinstance(i.get("issueprice"),float) else "(预估)" + str(i.get("jg1"))
         mes += """
@@ -33,9 +34,10 @@ for i in datajson:
         lwrandate = i.get("lwrandate")
 
 try:
-    sh_emoji = chr(0x1f389)
+    # sh_emoji = chr(0x1f389)
+    sh_emoji = u'\U0001f389'
     lwrandate = datetime.strptime(lwrandate, "%Y-%m-%dT%H:%M:%S")
-    mes+="\n中签号公布日及追缴日：%s\n祝您好运%c%c%c" % (lwrandate.strftime("%m月%d日"),sh_emoji,sh_emoji,sh_emoji)
+    mes+="\n中签号公布日及追缴日：%s月%s日\n祝您好运%c%c%c" % (lwrandate.month, lwrandate.day, sh_emoji,sh_emoji,sh_emoji)
 except NameError:
     mes += "\n今日没有新股"
 
