@@ -42,7 +42,7 @@ try:
     # sh_emoji = chr(0x1f389)
     sh_emoji = u'\U0001f389'
     lwrandate = datetime.strptime(lwrandate, "%Y-%m-%dT%H:%M:%S")
-    mes += "\n中签号公布日及追缴日：%s月%s日\n祝您好运%c%c%c" % (
+    mes += "中签号公布日及追缴日：%s月%s日\n祝您好运%c%c%c" % (
         lwrandate.month, lwrandate.day, sh_emoji, sh_emoji, sh_emoji)
 except NameError:
     mes += "【今日暂无新股申购】"
