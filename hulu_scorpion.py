@@ -21,7 +21,7 @@ except:
 # 开始创建消息
 mes = ""
 
-# 检索今天的新股
+# 检索明天的新股
 #  use +timedelta(days=1) to set days
 time = (date.today()).strftime('%Y-%m-%dT%H:%M:%S')
 for i in datajson:
@@ -50,7 +50,7 @@ except NameError:
 # 登录微信账号 开始发送
 import itchat
 
-itchat.auto_login(hotReload=True)  # enableCmdQR=True
+itchat.auto_login(hotReload=True, enableCmdQR=1)  # enableCmdQR=True
 itchat.get_friends()
 user = itchat.search_friends(name="华福证券芦秋霜")
 if user:
