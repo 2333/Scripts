@@ -1,0 +1,5 @@
+# -*- coding: utf-8 -*-
+tmeta = {"expand": "transitions", "transitions": [{"id": "11", "name": "开始进行", "to": {"self": "http://ijira.chinaamc.com/rest/api/2/status/3", "description": "问题正在被经办人处理。", "iconUrl": "http://ijira.chinaamc.com/images/icons/statuses/inprogress.png", "name": "进行中", "id": "3", "statusCategory": {"self": "http://ijira.chinaamc.com/rest/api/2/statuscategory/4", "id": 4, "key": "indeterminate",
+                                                                                                                                                                                                                                                                                                       "colorName": "yellow", "name": "进行中"}}}, {"id": "21", "name": "完成", "to": {"self": "http://ijira.chinaamc.com/rest/api/2/status/10002", "description": "", "iconUrl": "http://ijira.chinaamc.com/", "name": "完成", "id": "10002", "statusCategory": {"self": "http://ijira.chinaamc.com/rest/api/2/statuscategory/3", "id": 3, "key": "done", "colorName": "green", "name": "Done"}}}]}
+for t in tmeta['transitions']:
+    print t['name'].decode("utf-8")

@@ -1,0 +1,11 @@
+Mname 名称
+IP 管理IP
+type 类型
+status 虚拟机状态
+host_ip 所在物理服务器IP
+os 操作系统版本
+service 服务目录名称
+usage 应用明细
+admin 应用管理员
+environment 使用环境
+memo 备注
