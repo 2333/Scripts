@@ -21,19 +21,19 @@ except:
 # 开始创建消息
 mes = ""
 
-# 检索今天的新股
+# 检索明天的新股
 #  use +timedelta(days=1) to set days
 time = (date.today()).strftime('%Y-%m-%dT%H:%M:%S')
 for i in datajson:
     if i.get("purchasedate") == time:
         price = i.get("issueprice") if isinstance(
             i.get("issueprice"), float) else "(预估)" + str(i.get("jg1"))
-        mes += """
-今日新股：%s
+        mes += """今日新股：%s
 申购代码：%s
 发行价格：%s元/股
 申购上限：%s股
 参考行业：%s
+
 """ % (i.get("securityshortname"), i.get("subcode"),
             price, int(i.get("applyont")), i.get("INDUSTRY"))
         lwrandate = i.get("lwrandate")
@@ -50,9 +50,9 @@ except NameError:
 # 登录微信账号 开始发送
 import itchat
 
-itchat.auto_login(hotReload=True)  # enableCmdQR=True
+itchat.auto_login(hotReload=True, enableCmdQR=1)  # enableCmdQR=True
 itchat.get_friends()
-user = itchat.search_friends(name="霜Hyuk")
+user = itchat.search_friends(name="华福证券芦秋霜")
 if user:
     itchat.send(mes, toUserName=user[0].get("UserName"))
 # itchat.send(mes)
